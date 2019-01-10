@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  elx:
+    image: elixir:latest
+    volumes:
+      - ./:/code
+    working_dir: /code
