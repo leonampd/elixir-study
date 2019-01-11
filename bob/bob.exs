@@ -1,16 +1,16 @@
 defmodule Bob do
-  defp is_question?(input) do
+  defp question?(input) do
     String.ends_with?(input, "?")
   end
 
-  defp is_yelling_me?(input) do
+  defp yelling_me?(input) do
     String.trim(input) != ""
     and Regex.match?(~r/[a-zA-Z]/, input)
     and String.upcase(input) == input
   end
 
-  defp is_yelling_question?(input) do
-    is_yelling_me?(input) && is_question?(input)
+  defp yelling_question?(input) do
+    yelling_me?(input) && question?(input)
   end
 
   defp shout_in_russian?(input) do
@@ -23,9 +23,9 @@ defmodule Bob do
 
   def hey(input) do
     cond do
-      is_yelling_question?(input) -> "Calm down, I know what I'm doing!"
-      is_yelling_me?(input) or shout_in_russian?(input) -> "Whoa, chill out!"
-      is_question?(input) -> "Sure."
+      yelling_question?(input) -> "Calm down, I know what I'm doing!"
+      yelling_me?(input) or shout_in_russian?(input) -> "Whoa, chill out!"
+      question?(input) -> "Sure."
       silence?(input) -> "Fine. Be that way!"
       true -> "Whatever."
     end
