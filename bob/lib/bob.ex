@@ -12,19 +12,16 @@ defmodule Bob do
     yelling_me?(input) && question?(input)
   end
 
-  defp shout_in_russian?(input) do
-    input == "УХОДИ"
-  end
-
   defp silence?(input) do
     String.trim(input) == ""
   end
 
   def hey(input) do
+    input = String.trim(input)
     cond do
       silence?(input) -> "Fine. Be that way!"
       yelling_question?(input) -> "Calm down, I know what I'm doing!"
-      yelling_me?(input) or shout_in_russian?(input) -> "Whoa, chill out!"
+      yelling_me?(input) -> "Whoa, chill out!"
       question?(input) -> "Sure."
       true -> "Whatever."
     end
