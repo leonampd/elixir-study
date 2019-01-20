@@ -5,7 +5,7 @@ defmodule Bob do
 
   defp yelling_me?(input) do
     String.trim(input) != ""
-    and Regex.match?(~r/[a-zA-Z]/, input)
+    and Regex.match?(~r/[[:alpha:]]/u, input)
     and String.upcase(input) == input
   end
 
